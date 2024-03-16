@@ -1,0 +1,9 @@
+// Finance project in java
+
+1. Find total number of months included in datasheet
+2. Destructuring the function
+3. Extract the months (0-11)
+4. Providing the for loop to get the profits and loses
+5. Defining the function to find the relevant months
+6. Returning the results
+7. Displaying the results in the console
