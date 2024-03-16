@@ -134,3 +134,5 @@ function analyzeFinancialRecords(finances) {
 const financialAnalysis = analyzeFinancialRecords(finances);
 
 console.log(financialAnalysis);
+
+export default financialAnalysis;
