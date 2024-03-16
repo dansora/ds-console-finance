@@ -122,12 +122,24 @@ function analyzeFinancialRecords(finances) {
   const totalMonths = months.size;
   const averageChange = totalMonths > 1 ? totalChange / (totalMonths - 1) : 0;
 
+  // Create HTML content for results
+  const results = `
+<ul>
+  <li>Total Months: ${totalMonths}</li>
+  <li>Net Profit/Loss: ${previousProfitLoss}</li>
+  <li>Average Monthly Change: ${averageChange.toFixed(2)}</li>
+  <li>Greatest Increase: ${greatestIncrease.dateString} (${greatestIncrease.amount})</li>
+  <li>Greatest Decrease: ${greatestDecrease.dateString} (${greatestDecrease.amount})</li>
+</ul>
+`;
+
   return {
     totalMonths,
     netProfitLoss: totalProfitLoss,
     averageChange,
     greatestIncrease,
     greatestDecrease,
+    results // Add the results property
   };
 }
 
@@ -135,4 +147,4 @@ const financialAnalysis = analyzeFinancialRecords(finances);
 
 console.log(financialAnalysis);
 
-export default financialAnalysis;
+
