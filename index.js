@@ -98,7 +98,7 @@ function analyzeFinancialRecords(finances) {
   for (const record of finances) {
     const [dateString, profitLoss] = record; // Destructuring assignment
 
-    const month = new Date(dateString).getMonth(); // Extract month (0-11)
+    const month = new Date(dateString).getMonth(); // Extract month (0-85)
     months.add(month);
 
     totalProfitLoss += profitLoss;
@@ -119,19 +119,18 @@ function analyzeFinancialRecords(finances) {
     previousProfitLoss = profitLoss;
   }
 
-  const totalMonths = months.size;
+  const totalMonths = finances.length; //months.size
   const averageChange = totalMonths > 1 ? totalChange / (totalMonths - 1) : 0;
 
-  // Create HTML content for results
+  // Create console content for results
   const results = `
-<ul>
-  <li>Total Months: ${totalMonths}</li>
-  <li>Net Profit/Loss: ${previousProfitLoss}</li>
-  <li>Average Monthly Change: ${averageChange.toFixed(2)}</li>
-  <li>Greatest Increase: ${greatestIncrease.dateString} (${greatestIncrease.amount})</li>
-  <li>Greatest Decrease: ${greatestDecrease.dateString} (${greatestDecrease.amount})</li>
-</ul>
+  Total Months: ${totalMonths}
+  Net Profit/Loss: ${previousProfitLoss}
+  Average Monthly Change: ${averageChange.toFixed(2)}
+  Greatest Increase: ${greatestIncrease.dateString} (${greatestIncrease.amount})
+  Greatest Decrease: ${greatestDecrease.dateString} (${greatestDecrease.amount})
 `;
+console.log(results);
 
   return {
     totalMonths,
@@ -141,10 +140,8 @@ function analyzeFinancialRecords(finances) {
     greatestDecrease,
     results // Add the results property
   };
+  
 }
 
 const financialAnalysis = analyzeFinancialRecords(finances);
-
-console.log(financialAnalysis);
-
 
